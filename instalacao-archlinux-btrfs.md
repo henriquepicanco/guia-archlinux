@@ -117,13 +117,13 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
 
 - Agora, é necessário instalar os pacotes-base do sistema;
 - O pacstrap instala o sistema base e mais alguns pacotes para o sistema;
-- Troque o ``neovim`` pelo ``nano``, se essa for sua preferência para editor de texto em linha de comando;
+- Troque o ``vim`` pelo ``nano``, se essa for sua preferência para editor de texto em linha de comando;
 - Para gerenciar a conexão com a internet, usarei o ``NetworkManager``, troque por outro ou adicione pacotes adicionais, dependendo do seu caso;
 - Para iniciar o sistema, instalaremos o GRUB. O ``efibootmgr`` é um utilitário para manejarmos o EFI, ``intel-ucode`` é um pacote interessante apenas para computadores em INTEL;
 - Já o ``ntfs-3g`` e o ``os-prober`` são específicos para que o sistema consiga ver a partição do Windows e que o GRUB consiga ver a partição do sistema da Microsoft durante a sua auto-configuração:
 
     ````
-    pacstrap -K /mnt linux linux-firmware base neovim intel-ucode btrfs-progs git sudo networkmanager grub efibootmgr ntfs-3g os-prober flatpak
+    pacstrap -K /mnt linux linux-firmware base vim intel-ucode btrfs-progs git sudo networkmanager grub efibootmgr ntfs-3g os-prober flatpak
     ````
 
 - Gera-se um arquivo Fstab logo na sequencia:
@@ -159,19 +159,19 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
 - Depois, descomenta-se a linha relativa ao seu idioma no arquivo ``/etc/locale.gen``:
 
     ````
-    nvim /etc/locale.gen
+    vim /etc/locale.gen
     ````
 
 - Depois, adiciona-se a linha ``LANG=pt_BR.UTF-8`` ao arquivo ``/etc/locale.conf``:
 
     ````
-    nvim /etc/locale.conf
+    vim /etc/locale.conf
     ````
 
 - Por último, adiciona-se o keymap relativo ao seu teclado, sendo o meu caso ``KEYMAP=us-acentos``, ao arquivo ``/etc/vconsole.conf``:
 
     ````
-    nvim /etc/vconsole
+    vim /etc/vconsole
     ````
 
 ## 8. Configuração de rede
@@ -183,13 +183,13 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
 - Depois de escolhido o nome, escreva-o no arquivo ``/etc/hostname``:
 
     ````
-    nvim /etc/hostname
+    vim /etc/hostname
     ````
 
 - Após, é bom configurar o arquivo ``/etc/hosts``:
 
     ````
-    nvim /etc/hosts
+    vim /etc/hosts
     ````
 
 - Neste arquivo, adicione as linhas como estiverem abaixo:
@@ -236,10 +236,10 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
 - Para descomentar essa linha, remova o ````#```` do início da linha. Depois, salve e saia do arquivo;
 - O arquivo ``/etc/sudoers`` deve ser editado sempre com o comando VISUDO. Ele procurará pelo editor ``vi`` e abrirá o arquivo com segurança;
 - Entretanto, como você já deve ter notado, não instalamos o editor ``vi``. Por isso, é necessário editar essa entrada. Antes de propriamente editar o arquivo, mudemos o editor para ``visudo`` e aí sim, editemos o arquivo;
-- No comando abaixo, se você usa o ``nano``, troque ``nvim`` por ``nano`` em ``EDITOR=nvim``:
+- No comando abaixo, se você usa o ``nano``, troque ``vim`` por ``nano`` em ``EDITOR=vim``:
 
     ````
-    EDITOR=nvim visudo 
+    EDITOR=vim visudo 
     ````
 
 ## 10. ``mkinitcpio``
@@ -248,7 +248,7 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
 - Abra o arquivo de configuração para adicionar ``btrfs`` entre os parêntes de ``MODULES=()``:
 
     ````
-    nvim /etc/mkinitcpio.conf
+    vim /etc/mkinitcpio.conf
     ````
 
 - Depois, roda-se o comando abaixo:
@@ -264,7 +264,7 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
 - Se essa linha não existir, adicione o ``GRUB_DISABLE_OS_PROBER=false`` ao final do arquivo ``/etc/default/grub``:
 
     ````
-    nvim /etc/default/grub
+    vim /etc/default/grub
     ````
 
 - Depois, roda-se a configuração do GRUB:
@@ -367,14 +367,14 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
     ````
     btrfs sub del /.snapshots/
     mkdir /.snapshots
-    nvim /etc/fstab
+    vim /etc/fstab
     ````
 
 - Será necessário montar o diretório no ``/etc/fstab``;
 - Abra o arquivo abaixo e adicione a linha ``/dev/sdY /.snapshots btrfs rw,relatime,compress=lzo,ssd,space_cache=v2,subvol=@snapshots 0 0``:
 
     ````
-    nvim /etc/fstab
+    vim /etc/fstab
     ````
 
 - Então remonte ``/.snapshots``; 
@@ -413,7 +413,7 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
 - E habilitar a lista de snapshots no GRUB, editando o arquivo abaixo e colocando na última linha ``GRUB_DISABLE_RECOVERY=false``:
 
     ````
-    nvim /etc/default/grub
+    vim /etc/default/grub
     ````
 
 - Depois, gere uma nova configuração para o GRUB, com:
