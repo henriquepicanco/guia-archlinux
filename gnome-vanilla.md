@@ -7,7 +7,7 @@ Programas que são oficiais, ou intencionados a se integrarem com ele costumam c
 
 Na lista a seguir, listo programas oficias e compatíveis com o GNOME que seguem essa filosofia e que podem ser instalados para uma experiência do GNOME considerada "vanilla", que mantém o visual entre todos (ou quase todos) os programas instalados.
 
-Os programas estão separados entre [Pacman] e [Flathub]. Os listados como [Pacman] precisam ser instalados como pacotes do Arch Linux, via ``sudo pacman -S {nomedopacote}``. Já os [Flathub] são pacotes disponíveis no repositório do Flatpak e, para isso, precisa ser instalado no sistema.
+Os programas estão separados entre [Pacman] e [Flathub]. Os listados como [Pacman] precisam ser instalados como pacotes do Arch Linux, via ``sudo pacman -S {nomedopacote}``. Já os [Flathub] são pacotes disponíveis no repositório do Flatpak e, para isso, precisa ser instalado no sistema. Para instalar os pacotes listados aqui como Flatpak, usa-se o comando ``flatpak install flathub {nomedopacote}``. Tanto para o ``pacman -S`` quanto para o ``flatpak install``, basta-se listar os pacotes separados por espaços para instalar vários programas por uma única linha de comando.
 
 O Flatpak pode ser instalado no Arch Linux usando os seguidores comandos. *Se você instalou o Arch Linux usando o [Guia de Instalação do Arch Linux com BTRFS](https://github.com/henriquepicanco/guia-archlinux/blob/main/instalacao-archlinux-btrfs.md), você pode pular esta etapa, pois o Flatpak já está instalado.*
 
