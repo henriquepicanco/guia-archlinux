@@ -89,14 +89,13 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
 - Por conta da tecnologia, precisamos fazer isso uma a uma, com os seguites comandos:
 
     ````
-    mount -o noatime,commit=120,compress=zstd,space_cache,subvol=0 /dev/sdY /mnt
+    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,space_cache,subvol=@ /dev/sdY /mnt
     mkdir /mnt/{efi,home,var,opt,tmp,.snapshots}
-    mount -o noatime,commit=120,compress=zstd,space_cache,subvol=@home /dev/sdY /mnt/home
-    mount -o noatime,commit=120,compress=zstd,space_cache,subvol=@opt /dev/sdY /mnt/var
-    mount -o noatime,commit=120,compress=zstd,space_cache,subvol=@opt /dev/sdY /mnt/opt
-    mount -o noatime,commit=120,compress=zstd,space_cache,subvol=@tmp /dev/sdY /mnt/tmp
-    mount -o noatime,commit=120,compress=zstd,space_cache,subvol=@.snapshots /dev/sdY /mnt/.snapshots
-    mount -o subvol=@var /dev/sdY /mnt/var
+    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,space_cache,subvol=@home /dev/sdY /mnt/home
+    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,space_cache,subvol=@tmp /dev/sdY /mnt/tmp
+    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,space_cache,subvol=@opt /dev/sdY /mnt/opt
+    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,space_cache,subvol=@.snapshots /dev/sdY /mnt/.snapshots
+    mount -o discard=async,subvol=@var /dev/sdY /mnt/var
     ````
 
 - E, por último, é necessário montar a partição EFI;
