@@ -10,6 +10,8 @@ Os guias contidos aqui estão disponíveis **sem garantias**. Ou seja, eles pode
 
 - Instalação do Arch Linux com BTRFS e snapper
     - [PT] [instalacao-archlinux-btrfs.md](https://github.com/henriquepicanco/guia-archlinux/blob/main/instalacao-archlinux-btrfs.md)
+- Pacotes para uma instalação do GNOME "vanilla"
+    - [PT] [gnome-vanilla.md](https://github.com/henriquepicanco/guia-archlinux/blob/main/gnome-vanilla.md)
 
 ---
 

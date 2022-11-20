@@ -123,7 +123,7 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
 - Já o ``ntfs-3g`` e o ``os-prober`` são específicos para que o sistema consiga ver a partição do Windows e que o GRUB consiga ver a partição do sistema da Microsoft durante a sua auto-configuração:
 
     ````
-    pacstrap -K /mnt linux linux-firmware base neovim intel-ucode btrfs-progs git sudo networkmanager grub efibootmgr ntfs-3g os-prober 
+    pacstrap -K /mnt linux linux-firmware base neovim intel-ucode btrfs-progs git sudo networkmanager grub efibootmgr ntfs-3g os-prober flatpak
     ````
 
 - Gera-se um arquivo Fstab logo na sequencia:
