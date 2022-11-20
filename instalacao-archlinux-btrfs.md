@@ -89,15 +89,21 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
 - Por conta da tecnologia, precisamos fazer isso uma a uma, com os seguites comandos:
 
     ````
-    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,space_cache,subvol=@ /dev/sdY /mnt
+    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,subvol=@ /dev/sdY /mnt
     mkdir /mnt/{efi,home,var,opt,tmp,.snapshots}
-    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,space_cache,subvol=@home /dev/sdY /mnt/home
-    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,space_cache,subvol=@tmp /dev/sdY /mnt/tmp
-    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,space_cache,subvol=@opt /dev/sdY /mnt/opt
-    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,space_cache,subvol=@.snapshots /dev/sdY /mnt/.snapshots
+    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,subvol=@home /dev/sdY /mnt/home
+    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,subvol=@tmp /dev/sdY /mnt/tmp
+    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,subvol=@opt /dev/sdY /mnt/opt
+    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,subvol=@.snapshots /dev/sdY /mnt/.snapshots
     mount -o discard=async,subvol=@var /dev/sdY /mnt/var
     ````
 
+- Sobre as opções acima, um pequeno resumo:
+    - **noatime**: *No access time*. Aumenta a performance não escrevendo no exato momento que um arquivo é acessado;
+    - **commit**: intervalo periódico (em segundos) que uma informação é sincronizada com o armazenamento permanente;
+    - **compress-force**: ativa a compressão forçada e escolhe o algoritmo de armazenamento permanente;
+    - **discard=async**: libera o bloco não utilizado de uma unidade SSD compatível com o comando. Com discard=async, as extensões liberadas não são descartadas imediatamente, mas agrupadas e cortadas posteriormente por um thread de trabalho separado, melhorando a latência de confirmação. Você pode desativar isso se usar o HDD;
+    - **subvol** - escolhe o subvolume para montar;
 - E, por último, é necessário montar a partição EFI;
 - Num dual-boot com o Windows, esta partição já foi criada pelo instalador do Windows e não deve ser formatada!
 - Numa instalação onde o Arch Linux será o único sistema, ela foi criada no passo 3:
@@ -370,7 +376,7 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
     ````
 
 - Será necessário montar o diretório no ``/etc/fstab``;
-- Abra o arquivo abaixo e adicione a linha ``/dev/sdY /.snapshots btrfs rw,relatime,compress=lzo,ssd,space_cache=v2,subvol=@snapshots 0 0``:
+- Abra o arquivo abaixo e adicione a linha ``/dev/sdY /.snapshots btrfs rw,relatime,compress=lzo,ssd=v2,subvol=@snapshots 0 0``:
 
     ````
     vim /etc/fstab
