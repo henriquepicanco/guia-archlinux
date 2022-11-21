@@ -128,7 +128,7 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
 - Já o ``ntfs-3g`` e o ``os-prober`` são específicos para que o sistema consiga ver a partição do Windows e que o GRUB consiga ver a partição do sistema da Microsoft durante a sua auto-configuração:
 
     ````
-    pacstrap -K /mnt linux linux-firmware base vim intel-ucode btrfs-progs git sudo networkmanager grub efibootmgr ntfs-3g os-prober flatpak
+    pacstrap -K /mnt linux linux-firmware base base-devel grub efibootmgr intel-ucode ntfs-3g os-prober btrfs-progs vim git sudo networkmanager flatpak
     ````
 
 - Gera-se um arquivo Fstab logo na sequencia:
@@ -161,10 +161,11 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
     hwclock --systohc
     ````
 
-- Depois, descomenta-se a linha relativa ao seu idioma no arquivo ``/etc/locale.gen``:
+- Depois, descomenta-se a linha relativa ao seu idioma no arquivo ``/etc/locale.gen``, em seguida, roda-se o comando ``locale-gen``:
 
     ````
     vim /etc/locale.gen
+    locale-gen
     ````
 
 - Depois, adiciona-se a linha ``LANG=pt_BR.UTF-8`` ao arquivo ``/etc/locale.conf``:
@@ -176,7 +177,7 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
 - Por último, adiciona-se o keymap relativo ao seu teclado, sendo o meu caso ``KEYMAP=us-acentos``, ao arquivo ``/etc/vconsole.conf``:
 
     ````
-    vim /etc/vconsole
+    vim /etc/vconsole.conf
     ````
 
 ## 8. Configuração de rede
