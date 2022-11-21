@@ -81,7 +81,6 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
     btrfs su cr /mnt/@var
     btrfs su cr /mnt/@opt
     btrfs su cr /mnt/@tmp
-    btrfs su cr /mnt/@.snapshots
     umount /mnt
     ````
 
@@ -90,11 +89,10 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
 
     ````
     mount -o noatime,commit=120,compress-force=zstd:7,discard=async,subvol=@ /dev/sdY /mnt
-    mkdir /mnt/{efi,home,var,opt,tmp,.snapshots}
+    mkdir /mnt/{efi,home,var,opt,tmp}
     mount -o noatime,commit=120,compress-force=zstd:7,discard=async,subvol=@home /dev/sdY /mnt/home
     mount -o noatime,commit=120,compress-force=zstd:7,discard=async,subvol=@tmp /dev/sdY /mnt/tmp
     mount -o noatime,commit=120,compress-force=zstd:7,discard=async,subvol=@opt /dev/sdY /mnt/opt
-    mount -o noatime,commit=120,compress-force=zstd:7,discard=async,subvol=@.snapshots /dev/sdY /mnt/.snapshots
     mount -o discard=async,subvol=@var /dev/sdY /mnt/var
     ````
 
@@ -336,7 +334,6 @@ Este guia assumirá que você já tem uma ISO do Arch Linux queimada em um pendr
     ID 257 gen 781 top level 5 path @tmp
     ID 258 gen 810 top level 5 path @log
     ID 259 gen 804 top level 5 path @pkg
-    ID 260 gen 10 top level 5 path @snapshots
     ID 264 gen 34 top level 256 path var/lib/portables
     ID 265 gen 35 top level 256 path var/lib/machines
     ````
