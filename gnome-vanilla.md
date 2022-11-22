@@ -47,6 +47,16 @@ Os programas a seguir não são necessários para o sistema rodar ou para a usab
 - **Monitor do Sistema** - ``gnome-system-monitor`` [Pacman] - Gerenciador de tarefas do GNOME;
 - **Simple Scan** - ``simple-scan`` [Pacman] - Utilitário de escaneadora;
 - **Discos** - ``gnome-disk-utility`` [Pacman] - Aplicativo para gerenciamento de discos;
+- **Contas Online** - ``gnome-online-accounts`` [Pacman] - Conecta o GNOME a contas como Google, Microsoft e outros. Recomendado também instalar os seguintes pacotes:
+    - ``gvfs`` [Pacman];
+    - ``gvfs-afc`` [Pacman];
+    - ``gvfs-goa`` [Pacman];
+    - ``gvfs-goa`` [Pacman];
+    - ``gvfs-google`` [Pacman];
+    - ``gvfs-gphoto2`` [Pacman];
+    - ``gvfs-mtp`` [Pacman];
+    - ``gvfs-nfs`` [Pacman];
+    - ``gvfs-smb`` [Pacman];
 - **Geary** - ``org.gnome.Geary`` [Flathub] - App de e-mail;
 - **Black Box** - ``com.raggesilver.BlackBox`` [Flathub] - Terminal alternativo para o GNOME, com um belíssimo visual;
 - **Cheese** - ``org.gnome.Cheese`` [Flathub] - Utilitário para webcam;
